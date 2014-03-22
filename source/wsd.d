@@ -60,7 +60,21 @@ string processCode( string code )
 			// If beginning of a block, don't print semicolon
 			if( line[$-1] == ':' )
 			{
-				result ~= line.chomp( ":" );
+				bool keywordFound = false;
+				// If block keyword, wrap condition in parens before continuing
+				foreach( keyword; [ "for", "while", "if" ] )
+				{
+					if( line[ 0..keyword.length ] == keyword )
+					{
+						result ~= keyword ~ "( " ~ line.chompPrefix( keyword ~ " " ).chomp( ":" ) ~ " )";
+						keywordFound = true;
+						break;
+					}
+				}
+
+				// If found keyword, skip re-appending the line
+				if( !keywordFound )
+					result ~= line.chomp( ":" );
 			}
 			// Else, just an expression that needs a semicolon
 			else

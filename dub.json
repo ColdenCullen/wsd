@@ -1,0 +1,10 @@
+{
+	"name": "wsd",
+	"description": "A whitespace based D dialect.",
+	"copyright": "Copyright © 2014, Colden Cullen",
+	"authors": [ "Colden Cullen" ],
+	"dependencies": {
+	},
+	"importPaths": ["source"],
+	"stringImportPaths": ["test"]
+}

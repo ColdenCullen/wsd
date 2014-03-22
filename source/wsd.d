@@ -94,19 +94,7 @@ unittest
 {
 	auto wsd = import( "test1.wsd" );
 
-	auto targetCode = q{
-		import std.stdio;
-
-		void main()
-		{
-			for( int i = 0; i < 10; ++i )
-			{
-				writeln( "White space!" );
-			}
-
-			writeln( "Less white space!" );
-		}
-	}.outdent().outdent();
+	auto targetCode = import( "test1.d" );
 
 	auto actualCode = processCode( wsd );
 

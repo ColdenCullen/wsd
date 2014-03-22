@@ -62,7 +62,7 @@ string processCode( string code )
 			{
 				bool keywordFound = false;
 				// If block keyword, wrap condition in parens before continuing
-				foreach( keyword; [ "for", "while", "if" ] )
+				foreach( keyword; [ "for", "foreach", "while", "if" ] )
 				{
 					if( line[ 0..keyword.length ] == keyword )
 					{

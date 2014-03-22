@@ -1,6 +1,6 @@
 import wsd;
 import io = std.stdio, file = std.file;
-import std.process, std.path, std.string;
+import std.process, std.path;
 
 void main( string[] args )
 {

@@ -66,7 +66,7 @@ string processCode( string code )
 				{
 					if( line[ 0..keyword.length ] == keyword )
 					{
-						result ~= keyword ~ "( " ~ line.chompPrefix( keyword ~ " " ).chomp( ":" ) ~ " )";
+						result ~= keyword ~ "( " ~ line.chompPrefix( keyword ).chomp( ":" ).strip ~ " )";
 						keywordFound = true;
 						break;
 					}

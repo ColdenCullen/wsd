@@ -4,6 +4,7 @@ import std.string, std.stdio;
 string processCode( string code )
 {
 	enum lineSep = "\n";		// Line seperator
+	enum lineComment = "//";	// Beginning of comments
 	auto result = "";			// Buffer to put result code in
 	auto indentifier = "\t";	// The string that constitutes an indent
 	uint indentLevel = 0;		// Current level of indentation
@@ -12,7 +13,16 @@ string processCode( string code )
 	{
 		// Remove all whitespace right of code and copy out of buffer
 		auto line = lineBuffer.stripRight().dup;
-
+		auto comment = "".dup;
+		
+		// If you find a double slash, store in comment
+		auto commentIndex = line.indexOf( lineComment );
+		if( commentIndex != -1 )
+		{
+			comment = line[ commentIndex+2..$ ].strip;
+			line = line[ 0..commentIndex ].strip;
+		}
+		
 		// If not a whitespace line, process
 		if( line.length )
 		{
@@ -76,6 +86,9 @@ string processCode( string code )
 				result ~= line ~ ";";
 			}
 		}
+
+		if( comment.length )
+			result ~= lineComment ~ " " ~ comment;
 
 		result ~= lineSep;
 	}

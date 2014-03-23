@@ -1,4 +1,4 @@
-wsd
+wsd [![Build Status](https://travis-ci.org/ColdenCullen/wsd.svg?branch=master)](https://travis-ci.org/ColdenCullen/wsd)
 ===
 
 A whitespace-based D dialect. I should note that this a proof of concept, and no more.

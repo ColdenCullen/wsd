@@ -7,7 +7,6 @@ string processCode( string code )
 	auto result = "";			// Buffer to put result code in
 	auto indentifier = "\t";	// The string that constitutes an indent
 	uint indentLevel = 0;		// Current level of indentation
-	uint emptyLines = 0;		// Empty lines to catch up on when closing a block
 
 	foreach( lineBuffer; code.splitLines )
 	{
@@ -49,11 +48,6 @@ string processCode( string code )
 			}
 
 			// Pad output with appropriate whitespace (for readibility)
-			foreach( i; 0..emptyLines )
-			{
-				result ~= lineSep;
-				--emptyLines;
-			}
 			foreach( i; 0..lineIndent )
 				result ~= indentifier;
 
@@ -81,11 +75,6 @@ string processCode( string code )
 			{
 				result ~= line ~ ";";
 			}
-		}
-		else
-		{
-			++emptyLines;
-			continue;
 		}
 
 		result ~= lineSep;
